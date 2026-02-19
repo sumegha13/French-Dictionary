@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>French Vocabulary List</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #fafafa; padding: 20px; color: #333; }
+    h1 { text-align: center; color: #444; }
+    input { width: 100%; padding: 10px; margin-bottom: 15px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
+    th, td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; vertical-align: top; }
+    th { background: #f2f2f2; font-weight: bold; }
+    tr:hover { background: #f9f9f9; }
+    button { padding: 6px 10px; border: none; background: #4CAF50; color: white; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #45a049; }
+</style>
+</head>
+<body>
+
+<h1>French Vocabulary List</h1>
+
+<input type="text" id="search" placeholder="Search French, English, pronunciation, or example..." onkeyup="filterTable()">
+
+<table id="vocabTable">
+<thead>
+<tr>
+    <th>French</th>
+    <th>English</th>
+    <th>Pronunciation</th>
+    <th>Example</th>
+    <th>Audio</th>
+</tr>
+</thead>
+<tbody>
+
+<!-- POSSESSIVE ADJECTIVES -->
+<tr><td>mon</td><td>my (masc.)</td><td>mon</td><td>Mon ami est ici.</td><td><button onclick="speak('mon')">🔊</button></td></tr>
+<tr><td>ma</td><td>my (fem.)</td><td>mah</td><td>Ma maison est grande.</td><td><button onclick="speak('ma')">🔊</button></td></tr>
+<tr><td>mes</td><td>my (plural)</td><td>may</td><td>Mes clés sont perdues.</td><td><button onclick="speak('mes')">🔊</button></td></tr>
+
+<tr><td>ton</td><td>your (masc.)</td><td>ton</td><td>Ton chien est mignon.</td><td><button onclick="speak('ton')">🔊</button></td></tr>
+<tr><td>ta</td><td>your (fem.)</td><td>tah</td><td>Ta sœur est gentille.</td><td><button onclick="speak('ta')">🔊</button></td></tr>
+<tr><td>tes</td><td>your (plural)</td><td>tay</td><td>Tes livres sont sur la table.</td><td><button onclick="speak('tes')">🔊</button></td></tr>
+
+<tr><td>son</td><td>his/her (masc.)</td><td>son</td><td>Son fils a dix ans.</td><td><button onclick="speak('son')">🔊</button></td></tr>
+<tr><td>sa</td><td>his/her (fem.)</td><td>sah</td><td>Sa fille est à l’école.</td><td><button onclick="speak('sa')">🔊</button></td></tr>
+<tr><td>ses</td><td>his/her (plural)</td><td>say</td><td>Ses amis arrivent.</td><td><button onclick="speak('ses')">🔊</button></td></tr>
+
+<tr><td>notre</td><td>our (sing.)</td><td>not-ruh</td><td>Notre maison est ici.</td><td><button onclick="speak('notre')">🔊</button></td></tr>
+<tr><td>nos</td><td>our (plural)</td><td>noh</td><td>Nos enfants jouent.</td><td><button onclick="speak('nos')">🔊</button></td></tr>
+
+<tr><td>votre</td><td>your (formal)</td><td>vot-ruh</td><td>Votre voiture est prête.</td><td><button onclick="speak('votre')">🔊</button></td></tr>
+<tr><td>vos</td><td>your (plural)</td><td>voh</td><td>Vos clés sont là.</td><td><button onclick="speak('vos')">🔊</button></td></tr>
+
+<tr><td>leur</td><td>their (sing.)</td><td>luhr</td><td>Leur chien dort.</td><td><button onclick="speak('leur')">🔊</button></td></tr>
+<tr><td>leurs</td><td>their (plural)</td><td>luhr</td><td>Leurs amis sont gentils.</td><td><button onclick="speak('leurs')">🔊</button></td></tr>
+
+<!-- MAIN VOCABULARY -->
+<tr><td>ami</td><td>friend</td><td>ah-mee</td><td>Mon ami parle français.</td><td><button onclick="speak('ami')">🔊</button></td></tr>
+<tr><td>amie</td><td>friend (female)</td><td>ah-mee</td><td>Mon amie est drôle.</td><td><button onclick="speak('amie')">🔊</button></td></tr>
+<tr><td>soeur</td><td>sister</td><td>sir</td><td>Ma sœur est à la maison.</td><td><button onclick="speak('sœur')">🔊</button></td></tr>
+<tr><td>fils</td><td>son</td><td>feess</td><td>Son fils joue dehors.</td><td><button onclick="speak('fils')">🔊</button></td></tr>
+<tr><td>fille</td><td>daughter</td><td>fee</td><td>Sa fille lit un livre.</td><td><button onclick="speak('fille')">🔊</button></td></tr>
+
+<tr><td>heureux</td><td>happy (male)</td><td>uh-ruh</td><td>Je suis heureux aujourd’hui.</td><td><button onclick="speak('heureux')">🔊</button></td></tr>
+<tr><td>heureuse</td><td>happy (female)</td><td>uh-ruhz</td><td>Elle est heureuse ici.</td><td><button onclick="speak('heureuse')">🔊</button></td></tr>
+
+<tr><td>gentil</td><td>kind (male)</td><td>zhahn-tee</td><td>Il est très gentil.</td><td><button onclick="speak('gentil')">🔊</button></td></tr>
+<tr><td>gentille</td><td>kind (female)</td><td>zhahn-tee-yuh</td><td>Elle est gentille avec moi.</td><td><button onclick="speak('gentille')">🔊</button></td></tr>
+
+<tr><td>fatigué</td><td>tired (male)</td><td>fa-tee-gay</td><td>Je suis fatigué ce soir.</td><td><button onclick="speak('fatigué')">🔊</button></td></tr>
+<tr><td>fatiguée</td><td>tired (female)</td><td>fa-tee-gay</td><td>Elle est fatiguée après le travail.</td><td><button onclick="speak('fatiguée')">🔊</button></td></tr>
+
+<tr><td>malade</td><td>sick</td><td>mah-lahd</td><td>Il est malade aujourd’hui.</td><td><button onclick="speak('malade')">🔊</button></td></tr>
+
+<tr><td>prêt</td><td>ready (male)</td><td>preh</td><td>Je suis prêt maintenant.</td><td><button onclick="speak('prêt')">🔊</button></td></tr>
+<tr><td>prête</td><td>ready (female)</td><td>preh-t</td><td>Elle est prête aussi.</td><td><button onclick="speak('prête')">🔊</button></td></tr>
+
+<tr><td>drôle</td><td>funny</td><td>droll</td><td>Ce film est drôle.</td><td><button onclick="speak('drôle')">🔊</button></td></tr>
+
+<tr><td>maison</td><td>home</td><td>meh-zon</td><td>Ma maison est petite.</td><td><button onclick="speak('maison')">🔊</button></td></tr>
+<tr><td>livre</td><td>book</td><td>leev-ruh</td><td>Le livre est intéressant.</td><td><button onclick="speak('livre')">🔊</button></td></tr>
+<tr><td>clés</td><td>keys</td><td>clay</td><td>Mes clés sont ici.</td><td><button onclick="speak('clés')">🔊</button></td></tr>
+<tr><td>chien</td><td>dog</td><td>shee-en</td><td>Le chien mange.</td><td><button onclick="speak('chien')">🔊</button></td></tr>
+
+<tr><td>temps</td><td>weather / time</td><td>tahn</td><td>Le temps est beau.</td><td><button onclick="speak('temps')">🔊</button></td></tr>
+<tr><td>aujourd'hui</td><td>today</td><td>oh-zhoor-dwee</td><td>Aujourd’hui, je travaille.</td><td><button onclick="speak('aujourd\'hui')">🔊</button></td></tr>
+
+<tr><td>parler</td><td>to speak</td><td>par-lay</td><td>Je parle anglais.</td><td><button onclick="speak('parler')">🔊</button></td></tr>
+<tr><td>venir</td><td>to come</td><td>vuh-neer</td><td>Tu viens avec moi.</td><td><button onclick="speak('venir')">🔊</button></td></tr>
+<tr><td>conduire</td><td>to drive</td><td>kon-dweer</td><td>Il conduit la voiture.</td><td><button onclick="speak('conduire')">🔊</button></td></tr>
+<tr><td>nager</td><td>to swim</td><td>nah-zhay</td><td>Elle nage bien.</td><td><button onclick="speak('nager')">🔊</button></td></tr>
+<tr><td>aider</td><td>to help</td><td>eh-day</td><td>Je t’aide maintenant.</td><td><button onclick="speak('aider')">🔊</button></td></tr>
+<tr><td>commencer</td><td>to start</td><td>ko-mon-say</td><td>Nous commençons le cours.</td><td><button onclick="speak('commencer')">🔊</button></td></tr>
+<tr><td>jouer</td><td>to play</td><td>zhoo-ay</td><td>Les enfants jouent dehors.</td><td><button onclick="speak('jouer')">🔊</button></td></tr>
+<tr><td>lire</td><td>to read</td><td>leer</td><td>Je lis un livre.</td><td><button onclick="speak('lire')">🔊</button></td></tr>
+<tr><td>trouver</td><td>to find</td><td>troo-vay</td><td>Je trouve mes clés.</td><td><button onclick="speak('trouver')">🔊</button></td></tr>
+<tr><td>étudier</td><td>to study</td><td>ay-too-dyay</td><td>J’étudie le français.</td><td><button onclick="speak('étudier')">🔊</button></td></tr>
+<tr><td>travailler</td><td>to work</td><td>tra-vai-yay</td><td>Elle travaille ici.</td><td><button onclick="speak('travailler')">🔊</button></td></tr>
+<tr><td>partir</td><td>to leave</td><td>par-teer</td><td>Je pars maintenant.</td><td><button onclick="speak('partir')">🔊</button></td></tr>
+<tr><td>appeler</td><td>to call</td><td>ap-lay</td><td>J’appelle ma mère.</td><td><button onclick="speak('appeler')">🔊</button></td></tr>
+<tr><td>nettoyer</td><td>to clean</td><td>neh-twa-yay</td><td>Nous nettoyons la maison.</td><td><button onclick="speak('nettoyer')">🔊</button></td></tr>
+<tr><td>écouter</td><td>to listen</td><td>ay-koo-tay</td><td>J’écoute la musique.</td><td><button onclick="speak('écouter')">🔊</button></td></tr>
+<tr><td>finir</td><td>to finish</td><td>fee-neer</td><td>Je finis mon travail.</td><td><button onclick="speak('finir')">🔊</button></td></tr>
+<tr><td>acheter</td><td>to buy</td><td>ash-tay</td><td>J’achète du pain.</td><td><button onclick="speak('acheter')">🔊</button></td></tr>
+<tr><td>dormir</td><td>to sleep</td><td>dor-meer</td><td>Le bébé dort.</td><td><button onclick="speak('dormir')">🔊</button></td></tr>
+<tr><td>faire attention</td><td>to be careful</td><td>fair ah-ton-syon</td><td>Fais attention à la route.</td><td><button onclick="speak('faire attention')">🔊</button></td></tr>
+
+<tr><td>intéressant</td><td>interesting</td><td>an-tay-ray-sahn</td><td>Le film est intéressant.</td><td><button onclick="speak('intéressant')">🔊</button></td></tr>
+<tr><td>beau</td><td>beautiful (male)</td><td>boh</td><td>Le temps est beau.</td><td><button onclick="speak('beau')">🔊</button></td></tr>
+<tr><td>belle</td><td>beautiful (female)</td><td>bell</td><td>Ta maison est belle.</td><td><button onclick="speak('belle')">🔊</button></td></tr>
+
+</tbody>
+</table>
+
+<script>
+function filterTable() {
+    const input = document.getElementById("search").value.toLowerCase();
+    const rows = document.querySelectorAll("#vocabTable tbody tr");
+
+    rows.forEach(row => {
+        const french = row.children[0].textContent.toLowerCase();
+        const english = row.children[1].textContent.toLowerCase();
+        const pron = row.children[2].textContent.toLowerCase();
+        const example = row.children[3].textContent.toLowerCase();
+
+        row.style.display =
+            french.includes(input) ||
+            english.includes(input) ||
+            pron.includes(input) ||
+            example.includes(input)
+            ? "" : "none";
+    });
+}
+
+function speak(word) {
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = "fr-FR";
+    speechSynthesis.speak(utter);
+}
+</script>
+
+</body>
+<footer style="margin-top:40px; text-align:center; color:#666; font-size:14px; line-height:1.6;">
+    <p>© 2026 Sumegha Gondaliya — All rights reserved.</p>
+
+    <p style="max-width:600px; margin:0 auto;">
+        I love coding — it keeps me inspired, curious, and grounded.  
+        And beyond the screen, my greatest joy comes from my two little ladies,  
+        who remind me every day why I build, learn, and grow.
+    </p>
+
+    <p>If you'd like to use this tool, collaborate, or support my work:</p>
+
+    <p>
+        📧 Email: <a href="mailto:sumegha137@gmail.com">sumegha137@gmail.com</a><br>
+        ☕ Buy me a coffee: 
+        <a href="https://buymeacoffee.com/Sumegha" target="_blank">
+            buymeacoffee.com/Sumegha
+        </a>
+    </p>
+</footer>
+</html>
