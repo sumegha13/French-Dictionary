@@ -22,168 +22,86 @@
 <input type="text" id="search" placeholder="Search French, English, pronunciation, or example..." onkeyup="filterTable()">
 
 <table id="vocabTable">
-<thead>
-<tr>
-    <th>French</th>
-    <th>English</th>
-    <th>Pronunciation</th>
-    <th>Example</th>
-    <th>Audio</th>
-</tr>
-</thead>
-<tbody>
+<table>
+  <thead>
+    <tr>
+      <th>Word / Verb</th>
+      <th>Meaning</th>
+      <th>Pronunciation</th>
+      <th>Example / Conjugation</th>
+      <th>Audio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- POSSESSIVE ADJECTIVES -->
+    <tr><td>mon</td><td>my (masc.)</td><td>mon</td><td>Mon ami est ici.</td><td><button onclick="speak('mon')">🔊</button></td></tr>
+    <tr><td>ma</td><td>my (fem.)</td><td>mah</td><td>Ma maison est grande.</td><td><button onclick="speak('ma')">🔊</button></td></tr>
+    <tr><td>mes</td><td>my (plural)</td><td>may</td><td>Mes clés sont perdues.</td><td><button onclick="speak('mes')">🔊</button></td></tr>
+    <tr><td>ton</td><td>your (masc.)</td><td>ton</td><td>Ton chien est mignon.</td><td><button onclick="speak('ton')">🔊</button></td></tr>
+    <tr><td>ta</td><td>your (fem.)</td><td>tah</td><td>Ta sœur est gentille.</td><td><button onclick="speak('ta')">🔊</button></td></tr>
+    <tr><td>tes</td><td>your (plural)</td><td>tay</td><td>Tes livres sont sur la table.</td><td><button onclick="speak('tes')">🔊</button></td></tr>
+    <tr><td>son</td><td>his/her (masc.)</td><td>son</td><td>Son fils a dix ans.</td><td><button onclick="speak('son')">🔊</button></td></tr>
+    <tr><td>sa</td><td>his/her (fem.)</td><td>sah</td><td>Sa fille est à l’école.</td><td><button onclick="speak('sa')">🔊</button></td></tr>
+    <tr><td>ses</td><td>his/her (plural)</td><td>say</td><td>Ses amis arrivent.</td><td><button onclick="speak('ses')">🔊</button></td></tr>
+    <tr><td>notre</td><td>our (sing.)</td><td>not-ruh</td><td>Notre maison est ici.</td><td><button onclick="speak('notre')">🔊</button></td></tr>
+    <tr><td>nos</td><td>our (plural)</td><td>noh</td><td>Nos enfants jouent.</td><td><button onclick="speak('nos')">🔊</button></td></tr>
+    <tr><td>votre</td><td>your (formal)</td><td>vot-ruh</td><td>Votre voiture est prête.</td><td><button onclick="speak('votre')">🔊</button></td></tr>
+    <tr><td>vos</td><td>your (plural)</td><td>voh</td><td>Vos clés sont là.</td><td><button onclick="speak('vos')">🔊</button></td></tr>
+    <tr><td>leur</td><td>their (sing.)</td><td>luhr</td><td>Leur chien dort.</td><td><button onclick="speak('leur')">🔊</button></td></tr>
+    <tr><td>leurs</td><td>their (plural)</td><td>luhr</td><td>Leurs amis sont gentils.</td><td><button onclick="speak('leurs')">🔊</button></td></tr>
 
-<!-- POSSESSIVE ADJECTIVES -->
-<tr><td>mon</td><td>my (masc.)</td><td>mon</td><td>Mon ami est ici.</td><td><button onclick="speak('mon')">🔊</button></td></tr>
-<tr><td>ma</td><td>my (fem.)</td><td>mah</td><td>Ma maison est grande.</td><td><button onclick="speak('ma')">🔊</button></td></tr>
-<tr><td>mes</td><td>my (plural)</td><td>may</td><td>Mes clés sont perdues.</td><td><button onclick="speak('mes')">🔊</button></td></tr>
+    <!-- NOUNS -->
+    <tr><td>ami</td><td>friend (male)</td><td>ah-mee</td><td>Mon ami parle français.</td><td><button onclick="speak('ami')">🔊</button></td></tr>
+    <tr><td>amie</td><td>friend (female)</td><td>ah-mee</td><td>Mon amie est drôle.</td><td><button onclick="speak('amie')">🔊</button></td></tr>
+    <tr><td>soeur</td><td>sister</td><td>sir</td><td>Ma sœur est à la maison.</td><td><button onclick="speak('sœur')">🔊</button></td></tr>
+    <tr><td>fils</td><td>son</td><td>feess</td><td>Son fils joue dehors.</td><td><button onclick="speak('fils')">🔊</button></td></tr>
+    <tr><td>fille</td><td>daughter</td><td>fee</td><td>Sa fille lit un livre.</td><td><button onclick="speak('fille')">🔊</button></td></tr>
+    <tr><td>maison</td><td>home</td><td>meh-zon</td><td>Ma maison est petite.</td><td><button onclick="speak('maison')">🔊</button></td></tr>
+    <tr><td>livre</td><td>book</td><td>leev-ruh</td><td>Le livre est intéressant.</td><td><button onclick="speak('livre')">🔊</button></td></tr>
+    <tr><td>clés</td><td>keys</td><td>clay</td><td>Mes clés sont ici.</td><td><button onclick="speak('clés')">🔊</button></td></tr>
+    <tr><td>chien</td><td>dog</td><td>shee-en</td><td>Le chien mange.</td><td><button onclick="speak('chien')">🔊</button></td></tr>
+    <tr><td>boulangerie</td><td>bakery</td><td>boo-lahn-zhuh-ree</td><td>Je vais à la boulangerie.</td><td><button onclick="speak('boulangerie')">🔊</button></td></tr>
+    <tr><td>ville</td><td>city</td><td>veel</td><td>Lyon est une grande ville.</td><td><button onclick="speak('ville')">🔊</button></td></tr>
+    <tr><td>métro</td><td>metro</td><td>may-troh</td><td>Je prends le métro pour aller au travail.</td><td><button onclick="speak('métro')">🔊</button></td></tr>
+    <tr><td>magasin</td><td>shop / store</td><td>mah-gah-zan</td><td>Je vais au magasin.</td><td><button onclick="speak('magasin')">🔊</button></td></tr>
+    <tr><td>emploi</td><td>job</td><td>ahm-plwah</td><td>Je cherche un emploi.</td><td><button onclick="speak('emploi')">🔊</button></td></tr>
 
-<tr><td>ton</td><td>your (masc.)</td><td>ton</td><td>Ton chien est mignon.</td><td><button onclick="speak('ton')">🔊</button></td></tr>
-<tr><td>ta</td><td>your (fem.)</td><td>tah</td><td>Ta sœur est gentille.</td><td><button onclick="speak('ta')">🔊</button></td></tr>
-<tr><td>tes</td><td>your (plural)</td><td>tay</td><td>Tes livres sont sur la table.</td><td><button onclick="speak('tes')">🔊</button></td></tr>
-
-<tr><td>son</td><td>his/her (masc.)</td><td>son</td><td>Son fils a dix ans.</td><td><button onclick="speak('son')">🔊</button></td></tr>
-<tr><td>sa</td><td>his/her (fem.)</td><td>sah</td><td>Sa fille est à l’école.</td><td><button onclick="speak('sa')">🔊</button></td></tr>
-<tr><td>ses</td><td>his/her (plural)</td><td>say</td><td>Ses amis arrivent.</td><td><button onclick="speak('ses')">🔊</button></td></tr>
-
-<tr><td>notre</td><td>our (sing.)</td><td>not-ruh</td><td>Notre maison est ici.</td><td><button onclick="speak('notre')">🔊</button></td></tr>
-<tr><td>nos</td><td>our (plural)</td><td>noh</td><td>Nos enfants jouent.</td><td><button onclick="speak('nos')">🔊</button></td></tr>
-
-<tr><td>votre</td><td>your (formal)</td><td>vot-ruh</td><td>Votre voiture est prête.</td><td><button onclick="speak('votre')">🔊</button></td></tr>
-<tr><td>vos</td><td>your (plural)</td><td>voh</td><td>Vos clés sont là.</td><td><button onclick="speak('vos')">🔊</button></td></tr>
-
-<tr><td>leur</td><td>their (sing.)</td><td>luhr</td><td>Leur chien dort.</td><td><button onclick="speak('leur')">🔊</button></td></tr>
-<tr><td>leurs</td><td>their (plural)</td><td>luhr</td><td>Leurs amis sont gentils.</td><td><button onclick="speak('leurs')">🔊</button></td></tr>
-
-<!-- MAIN VOCABULARY -->
-<tr><td>ami</td><td>friend</td><td>ah-mee</td><td>Mon ami parle français.</td><td><button onclick="speak('ami')">🔊</button></td></tr>
-<tr><td>amie</td><td>friend (female)</td><td>ah-mee</td><td>Mon amie est drôle.</td><td><button onclick="speak('amie')">🔊</button></td></tr>
-<tr><td>soeur</td><td>sister</td><td>sir</td><td>Ma sœur est à la maison.</td><td><button onclick="speak('sœur')">🔊</button></td></tr>
-<tr><td>fils</td><td>son</td><td>feess</td><td>Son fils joue dehors.</td><td><button onclick="speak('fils')">🔊</button></td></tr>
-<tr><td>fille</td><td>daughter</td><td>fee</td><td>Sa fille lit un livre.</td><td><button onclick="speak('fille')">🔊</button></td></tr>
-
-<tr><td>heureux</td><td>happy (male)</td><td>uh-ruh</td><td>Je suis heureux aujourd’hui.</td><td><button onclick="speak('heureux')">🔊</button></td></tr>
-<tr><td>heureuse</td><td>happy (female)</td><td>uh-ruhz</td><td>Elle est heureuse ici.</td><td><button onclick="speak('heureuse')">🔊</button></td></tr>
-
-<tr><td>gentil</td><td>kind (male)</td><td>zhahn-tee</td><td>Il est très gentil.</td><td><button onclick="speak('gentil')">🔊</button></td></tr>
-<tr><td>gentille</td><td>kind (female)</td><td>zhahn-tee-yuh</td><td>Elle est gentille avec moi.</td><td><button onclick="speak('gentille')">🔊</button></td></tr>
-
-<tr><td>fatigué</td><td>tired (male)</td><td>fa-tee-gay</td><td>Je suis fatigué ce soir.</td><td><button onclick="speak('fatigué')">🔊</button></td></tr>
-<tr><td>fatiguée</td><td>tired (female)</td><td>fa-tee-gay</td><td>Elle est fatiguée après le travail.</td><td><button onclick="speak('fatiguée')">🔊</button></td></tr>
-
-<tr><td>malade</td><td>sick</td><td>mah-lahd</td><td>Il est malade aujourd’hui.</td><td><button onclick="speak('malade')">🔊</button></td></tr>
-
-<tr><td>prêt</td><td>ready (male)</td><td>preh</td><td>Je suis prêt maintenant.</td><td><button onclick="speak('prêt')">🔊</button></td></tr>
-<tr><td>prête</td><td>ready (female)</td><td>preh-t</td><td>Elle est prête aussi.</td><td><button onclick="speak('prête')">🔊</button></td></tr>
-
-<tr><td>drôle</td><td>funny</td><td>droll</td><td>Ce film est drôle.</td><td><button onclick="speak('drôle')">🔊</button></td></tr>
-
-<tr><td>maison</td><td>home</td><td>meh-zon</td><td>Ma maison est petite.</td><td><button onclick="speak('maison')">🔊</button></td></tr>
-<tr><td>livre</td><td>book</td><td>leev-ruh</td><td>Le livre est intéressant.</td><td><button onclick="speak('livre')">🔊</button></td></tr>
-<tr><td>clés</td><td>keys</td><td>clay</td><td>Mes clés sont ici.</td><td><button onclick="speak('clés')">🔊</button></td></tr>
-<tr><td>chien</td><td>dog</td><td>shee-en</td><td>Le chien mange.</td><td><button onclick="speak('chien')">🔊</button></td></tr>
-
-<tr><td>temps</td><td>weather / time</td><td>tahn</td><td>Le temps est beau.</td><td><button onclick="speak('temps')">🔊</button></td></tr>
-<tr><td>aujourd'hui</td><td>today</td><td>oh-zhoor-dwee</td><td>Aujourd’hui, je travaille.</td><td><button onclick="speak('aujourd\'hui')">🔊</button></td></tr>
-
-<tr><td>parler</td><td>to speak</td><td>par-lay</td><td>Je parle anglais.</td><td><button onclick="speak('parler')">🔊</button></td></tr>
-<tr><td>venir</td><td>to come</td><td>vuh-neer</td><td>Tu viens avec moi.</td><td><button onclick="speak('venir')">🔊</button></td></tr>
-<tr><td>conduire</td><td>to drive</td><td>kon-dweer</td><td>Il conduit la voiture.</td><td><button onclick="speak('conduire')">🔊</button></td></tr>
-<tr><td>nager</td><td>to swim</td><td>nah-zhay</td><td>Elle nage bien.</td><td><button onclick="speak('nager')">🔊</button></td></tr>
-<tr><td>aider</td><td>to help</td><td>eh-day</td><td>Je t’aide maintenant.</td><td><button onclick="speak('aider')">🔊</button></td></tr>
-<tr><td>commencer</td><td>to start</td><td>ko-mon-say</td><td>Nous commençons le cours.</td><td><button onclick="speak('commencer')">🔊</button></td></tr>
-<tr><td>jouer</td><td>to play</td><td>zhoo-ay</td><td>Les enfants jouent dehors.</td><td><button onclick="speak('jouer')">🔊</button></td></tr>
-<tr><td>lire</td><td>to read</td><td>leer</td><td>Je lis un livre.</td><td><button onclick="speak('lire')">🔊</button></td></tr>
-<tr><td>trouver</td><td>to find</td><td>troo-vay</td><td>Je trouve mes clés.</td><td><button onclick="speak('trouver')">🔊</button></td></tr>
-<tr><td>étudier</td><td>to study</td><td>ay-too-dyay</td><td>J’étudie le français.</td><td><button onclick="speak('étudier')">🔊</button></td></tr>
-<tr><td>travailler</td><td>to work</td><td>tra-vai-yay</td><td>Elle travaille ici.</td><td><button onclick="speak('travailler')">🔊</button></td></tr>
-<tr><td>partir</td><td>to leave</td><td>par-teer</td><td>Je pars maintenant.</td><td><button onclick="speak('partir')">🔊</button></td></tr>
-<tr><td>appeler</td><td>to call</td><td>ap-lay</td><td>J’appelle ma mère.</td><td><button onclick="speak('appeler')">🔊</button></td></tr>
-<tr><td>nettoyer</td><td>to clean</td><td>neh-twa-yay</td><td>Nous nettoyons la maison.</td><td><button onclick="speak('nettoyer')">🔊</button></td></tr>
-<tr><td>écouter</td><td>to listen</td><td>ay-koo-tay</td><td>J’écoute la musique.</td><td><button onclick="speak('écouter')">🔊</button></td></tr>
-<tr><td>finir</td><td>to finish</td><td>fee-neer</td><td>Je finis mon travail.</td><td><button onclick="speak('finir')">🔊</button></td></tr>
-<tr><td>acheter</td><td>to buy</td><td>ash-tay</td><td>J’achète du pain.</td><td><button onclick="speak('acheter')">🔊</button></td></tr>
-<tr><td>dormir</td><td>to sleep</td><td>dor-meer</td><td>Le bébé dort.</td><td><button onclick="speak('dormir')">🔊</button></td></tr>
-<tr><td>faire attention</td><td>to be careful</td><td>fair ah-ton-syon</td><td>Fais attention à la route.</td><td><button onclick="speak('faire attention')">🔊</button></td></tr>
-
-<tr><td>intéressant</td><td>interesting</td><td>an-tay-ray-sahn</td><td>Le film est intéressant.</td><td><button onclick="speak('intéressant')">🔊</button></td></tr>
-<tr><td>beau</td><td>beautiful (male)</td><td>boh</td><td>Le temps est beau.</td><td><button onclick="speak('beau')">🔊</button></td></tr>
-<tr><td>belle</td><td>beautiful (female)</td><td>bell</td><td>Ta maison est belle.</td><td><button onclick="speak('belle')">🔊</button></td></tr>
-<tr><td>remboursement en espèces</td><td>refund in cash</td><td>rahm-boors-mahn ahn ess-pess</td><td>Voici votre remboursement en espèces.</td><td><button onclick="speak('remboursement en espèces')">🔊</button></td></tr>
-
-<tr><td>espèces</td><td>cash</td><td>ess-pess</td><td>Je paie en espèces.</td><td><button onclick="speak('espèces')">🔊</button></td></tr>
-
-<tr><td>liquide</td><td>cash (informal)</td><td>lee-keed</td><td>Tu as du liquide ?</td><td><button onclick="speak('liquide')">🔊</button></td></tr>
-
-<tr><td>argent liquide</td><td>cash (formal)</td><td>ar-zhahn lee-keed</td><td>Il préfère payer en argent liquide.</td><td><button onclick="speak('argent liquide')">🔊</button></td></tr>
-
-<tr><td>billet</td><td>banknote</td><td>bee-yay</td><td>Voici un billet de 20 euros.</td><td><button onclick="speak('billet')">🔊</button></td></tr>
-
-<tr><td>reçu</td><td>receipt</td><td>ruh-sü</td><td>Vous avez le reçu ?</td><td><button onclick="speak('reçu')">🔊</button></td></tr>
-
-<tr><td>vérifier</td><td>to check</td><td>veh-ree-fee-yay</td><td>Laissez-moi vérifier.</td><td><button onclick="speak('vérifier')">🔊</button></td></tr>
-
-<tr><td>retourner un article</td><td>to return an item</td><td>ruh-tour-nay uh nar-tee-kluh</td><td>Je voudrais retourner cet article.</td><td><button onclick="speak('retourner un article')">🔊</button></td></tr>
-
-<tr><td>remboursement</td><td>refund</td><td>rahm-boors-mahn</td><td>Le remboursement sera immédiat.</td><td><button onclick="speak('remboursement')">🔊</button></td></tr>
-
-<tr><td>payer en espèces</td><td>to pay in cash</td><td>pay-yay ahn ess-pess</td><td>J’ai payé en espèces.</td><td><button onclick="speak('payer en espèces')">🔊</button></td></tr>
-
-<tr><td>payer par carte</td><td>to pay by card</td><td>pay-yay par kart</td><td>Vous avez payé par carte ?</td><td><button onclick="speak('payer par carte')">🔊</button></td></tr>
-
-<tr><td>problème</td><td>problem</td><td>proh-blem</td><td>Quel est le problème ?</td><td><button onclick="speak('problème')">🔊</button></td></tr>
-
-<tr><td>voici</td><td>here is</td><td>vwah-see</td><td>Voici votre reçu.</td><td><button onclick="speak('voici')">🔊</button></td></tr>
-
-<tr><td>d’accord</td><td>okay</td><td>dah-kor</td><td>D’accord, merci.</td><td><button onclick="speak('d’accord')">🔊</button></td></tr>
-
-<tr><td>bonne journée</td><td>have a good day</td><td>bun zhor-nay</td><td>Bonne journée, madame.</td><td><button onclick="speak('bonne journée')">🔊</button></td></tr>
-
-<tr><td>au revoir</td><td>goodbye</td><td>oh ruh-vwar</td><td>Au revoir et merci.</td><td><button onclick="speak('au revoir')">🔊</button></td></tr>
-
-<tr><td>votre</td><td>your (formal)</td><td>voh-tr</td><td>Voici votre remboursement.</td><td><button onclick="speak('votre')">🔊</button></td></tr>
-
-<tr><td>ton</td><td>your (informal masc.)</td><td>tohn</td><td>Ton chien est mignon.</td><td><button onclick="speak('ton')">🔊</button></td></tr>
-
-<tr><td>ta</td><td>your (informal fem.)</td><td>tah</td><td>Ta carte est ici.</td><td><button onclick="speak('ta')">🔊</button></td></tr>
-<tr><td>habiter</td><td>to live</td><td>ah-bee-tay</td><td>J’habite à Lyon.</td><td><button onclick="speak('habiter')">🔊</button></td></tr>
-<tr><td>depuis</td><td>since / for</td><td>duh-pwee</td><td>Je vis ici depuis 3 mois.</td><td><button onclick="speak('depuis')">🔊</button></td></tr>
-<tr><td>nouveau</td><td>new (masc.)</td><td>noo-voh</td><td>Je suis nouveau à Lyon.</td><td><button onclick="speak('nouveau')">🔊</button></td></tr>
-<tr><td>nouvelle</td><td>new (fem.)</td><td>noo-vel</td><td>Je suis nouvelle à Lyon.</td><td><button onclick="speak('nouvelle')">🔊</button></td></tr>
-<tr><td>apprendre</td><td>to learn</td><td>ah-pran-druh</td><td>J’apprends le français.</td><td><button onclick="speak('apprendre')">🔊</button></td></tr>
-<tr><td>langue</td><td>language</td><td>lahng</td><td>Le français est une langue intéressante.</td><td><button onclick="speak('langue')">🔊</button></td></tr>
-<tr><td>bonjour</td><td>hello</td><td>bohn-zhoor</td><td>Bonjour madame !</td><td><button onclick="speak('bonjour')">🔊</button></td></tr>
-<tr><td>voisine</td><td>neighbor (fem.)</td><td>vwa-zeen</td><td>Ma voisine est gentille.</td><td><button onclick="speak('voisine')">🔊</button></td></tr>
-<tr><td>ici</td><td>here</td><td>ee-see</td><td>J’habite ici.</td><td><button onclick="speak('ici')">🔊</button></td></tr>
-<tr><td>temps</td><td>time</td><td>tahn</td><td>Depuis combien de temps êtes-vous ici ?</td><td><button onclick="speak('temps')">🔊</button></td></tr>
-<tr><td>boulangerie</td><td>bakery</td><td>boo-lahn-zhuh-ree</td><td>Je vais à la boulangerie.</td><td><button onclick="speak('boulangerie')">🔊</button></td></tr>
-<tr><td>ville</td><td>city</td><td>veel</td><td>Lyon est une grande ville.</td><td><button onclick="speak('ville')">🔊</button></td></tr>
-<tr><td>métro</td><td>metro</td><td>may-troh</td><td>Je prends le métro pour aller au travail.</td><td><button onclick="speak('métro')">🔊</button></td></tr>
-<tr><td>magasin</td><td>shop / store</td><td>mah-gah-zan</td><td>Je vais au magasin.</td><td><button onclick="speak('magasin')">🔊</button></td></tr>
-<tr><td>emploi</td><td>job</td><td>ahm-plwah</td><td>Je cherche un emploi.</td><td><button onclick="speak('emploi')">🔊</button></td></tr>
-<tr><td>du</td><td>some (masc. uncountable) / shortcut for all uncountable</td><td>dyu</td><td>Je bois du café tous les matins.</td><td><button onclick="speak('du')">🔊</button></td></tr>
-<tr><td>des</td><td>some (plural countable)</td><td>day</td><td>J’achète des fruits au marché.</td><td><button onclick="speak('des')">🔊</button></td></tr>
-<tr><td>de</td><td>of / from / after verbs like venir de</td><td>duh</td><td>Je viens de l’Inde.</td><td><button onclick="speak('de')">🔊</button></td></tr>
-<tr><td>dans</td><td>in / inside (location)</td><td>dahn</td><td>Je suis dans la boulangerie.</td><td><button onclick="speak('dans')">🔊</button></td></tr>
-<tr><td>à</td><td>at / in (cities)</td><td>a</td><td>J’habite à Lyon.</td><td><button onclick="speak('à')">🔊</button></td></tr>
-<tr><td>en</td><td>in (countries / feminine countries)</td><td>ahn</td><td>Je vis en France.</td><td><button onclick="speak('en')">🔊</button></td></tr>
-<tr><td>un peu</td><td>a little / some (general amount)</td><td>uhn puh</td><td>Je parle un peu français.</td><td><button onclick="speak('un peu')">🔊</button></td></tr>
-<tr><td>très</td><td>very</td><td>tray</td><td>C’est très récent.</td><td><button onclick="speak('très')">🔊</button></td></tr>
-<tr><td>récente</td><td>recent (fem.)</td><td>ray-sahn</td><td>C’est une ville récente.</td><td><button onclick="speak('récente')">🔊</button></td></tr>
-<tr><td>tranquille</td><td>calm / peaceful</td><td>trahn-keel</td><td>Cette ville est très tranquille.</td><td><button onclick="speak('tranquille')">🔊</button></td></tr>
-<tr><td>tous les jours</td><td>every day</td><td>too-lay-zhoor</td><td>Je pratique le français tous les jours.</td><td><button onclick="speak('tous les jours')">🔊</button></td></tr>
-<tr><td>J’essaie</td><td>I try / I am trying</td><td>zhe-say</td><td>J’essaie d’apprendre le français.</td><td><button onclick="speak('J’essaie')">🔊</button></td></tr>
-<tr><td>nouvelle</td><td>new (feminine)</td><td>noo-vel</td><td>Je suis nouvelle ici.</td><td><button onclick="speak('nouvelle')">🔊</button></td></tr>
-<tr><td>venir de</td><td>to come from</td><td>vyan duh</td><td>Je viens de l’Inde.</td><td><button onclick="speak('venir de')">🔊</button></td></tr>
-<tr><td>français</td><td>French (language)</td><td>fron-say</td><td>J’apprends le français tous les jours.</td><td><button onclick="speak('français')">🔊</button></td></tr>
-<tr><td>travail</td><td>work / job</td><td>tra-vai</td><td>Je cherche du travail.</td><td><button onclick="speak('travail')">🔊</button></td></tr>
-<tr><td>Lyon</td><td>city in France</td><td>lee-ohn</td><td>J’habite à Lyon.</td><td><button onclick="speak('Lyon')">🔊</button></td></tr>
-<tr><td>mois</td><td>month</td><td>mwah</td><td>Je suis ici depuis trois mois.</td><td><button onclick="speak('mois')">🔊</button></td></tr>
-<tr><td>récente</td><td>recent (feminine)</td><td>ray-sahn</td><td>C’est très récente.</td><td><button onclick="speak('récente')">🔊</button></td></tr>
-<tr><td>tranquille</td><td>calm / peaceful</td><td>trahn-keel</td><td>C’est tranquille ici.</td><td><button onclick="speak('tranquille')">🔊</button></td></tr>
-<tr><td>apprendre</td><td>to learn</td><td>ah-pron-druh</td><td>J’essaie d’apprendre le français.</td><td><button onclick="speak('apprendre')">🔊</button></td></tr>
-<tr><td>essaie</td><td>try / attempt (from “essayer”)</td><td>eh-say</td><td>J’essaie de pratiquer tous les jours.</td><td><button onclick="speak('essaie')">🔊</button></td></tr>
-<tr><td>aimer</td><td>to like / love</td><td>em-ay</td><td>J’aime Lyon.</td><td><button onclick="speak('aimer')">🔊</button></td></tr>    
+    <!-- VERBS WITH PRESENT TENSE -->
+    <tr><td>parler</td><td>to speak</td><td>par-lay</td><td>Je parle, Tu parles, Il/Elle parle, Nous parlons, Vous parlez, Ils/Elles parlent</td><td><button onclick="speak('parler')">🔊</button></td></tr>
+    <tr><td>venir</td><td>to come</td><td>vuh-neer</td><td>Je viens, Tu viens, Il/Elle vient, Nous venons, Vous venez, Ils/Elles viennent</td><td><button onclick="speak('venir')">🔊</button></td></tr>
+    <tr><td>conduire</td><td>to drive</td><td>kon-dweer</td><td>Je conduis, Tu conduis, Il/Elle conduit, Nous conduisons, Vous conduisez, Ils/Elles conduisent</td><td><button onclick="speak('conduire')">🔊</button></td></tr>
+    <tr><td>nager</td><td>to swim</td><td>nah-zhay</td><td>Je nage, Tu nages, Il/Elle nage, Nous nageons, Vous nagez, Ils/Elles nagent</td><td><button onclick="speak('nager')">🔊</button></td></tr>
+    <tr><td>aider</td><td>to help</td><td>eh-day</td><td>J’aide, Tu aides, Il/Elle aide, Nous aidons, Vous aidez, Ils/Elles aident</td><td><button onclick="speak('aider')">🔊</button></td></tr>
+    <tr><td>commencer</td><td>to start</td><td>ko-mon-say</td><td>Je commence, Tu commences, Il/Elle commence, Nous commençons, Vous commencez, Ils/Elles commencent</td><td><button onclick="speak('commencer')">🔊</button></td></tr>
+    <tr><td>jouer</td><td>to play</td><td>zhoo-ay</td><td>Je joue, Tu joues, Il/Elle joue, Nous jouons, Vous jouez, Ils/Elles jouent</td><td><button onclick="speak('jouer')">🔊</button></td></tr>
+    <tr><td>lire</td><td>to read</td><td>leer</td><td>Je lis, Tu lis, Il/Elle lit, Nous lisons, Vous lisez, Ils/Elles lisent</td><td><button onclick="speak('lire')">🔊</button></td></tr>
+    <tr><td>trouver</td><td>to find</td><td>troo-vay</td><td>Je trouve, Tu trouves, Il/Elle trouve, Nous trouvons, Vous trouvez, Ils/Elles trouvent</td><td><button onclick="speak('trouver')">🔊</button></td></tr>
+    <tr><td>étudier</td><td>to study</td><td>ay-too-dyay</td><td>J’étudie, Tu étudies, Il/Elle étudie, Nous étudions, Vous étudiez, Ils/Elles étudient</td><td><button onclick="speak('étudier')">🔊</button></td></tr>
+    <tr><td>travailler</td><td>to work</td><td>tra-vai-yay</td><td>Je travaille, Tu travailles, Il/Elle travaille, Nous travaillons, Vous travaillez, Ils/Elles travaillent</td><td><button onclick="speak('travailler')">🔊</button></td></tr>
+    <tr><td>partir</td><td>to leave</td><td>par-teer</td><td>Je pars, Tu pars, Il/Elle part, Nous partons, Vous partez, Ils/Elles partent</td><td><button onclick="speak('partir')">🔊</button></td></tr>
+    <tr><td>appeler</td><td>to call</td><td>ap-lay</td><td>J’appelle, Tu appelles, Il/Elle appelle, Nous appelons, Vous appelez, Ils/Elles appellent</td><td><button onclick="speak('appeler')">🔊</button></td></tr>
+    <tr><td>nettoyer</td><td>to clean</td><td>neh-twa-yay</td><td>Je nettoie, Tu nettoies, Il/Elle nettoie, Nous nettoyons, Vous nettoyez, Ils/Elles nettoient</td><td><button onclick="speak('nettoyer')">🔊</button></td></tr>
+    <tr><td>écouter</td><td>to listen</td><td>ay-koo-tay</td><td>J’écoute, Tu écoutes, Il/Elle écoute, Nous écoutons, Vous écoutez, Ils/Elles écoutent</td><td><button onclick="speak('écouter')">🔊</button></td></tr>
+    <tr><td>finir</td><td>to finish</td><td>fee-neer</td><td>Je finis, Tu finis, Il/Elle finit, Nous finissons, Vous finissez, Ils/Elles finissent</td><td><button onclick="speak('finir')">🔊</button></td></tr>
+    <tr><td>acheter</td><td>to buy</td><td>ash-tay</td><td>J’achète, Tu achètes, Il/Elle achète, Nous achetons, Vous achetez, Ils/Elles achètent</td><td><button onclick="speak('acheter')">🔊</button></td></tr>
+    <tr><td>dormir</td><td>to sleep</td><td>dor-meer</td><td>Je dors, Tu dors, Il/Elle dort, Nous dormons, Vous dormez, Ils/Elles dorment</td><td><button onclick="speak('dormir')">🔊</button></td></tr>
+    <tr><td>faire attention</td><td>to be careful</td><td>fair ah-ton-syon</td><td>Je fais attention, Tu fais attention, Il/Elle fait attention, Nous faisons attention, Vous faites attention, Ils/Elles font attention</td><td><button onclick="speak('faire attention')">🔊</button></td></tr>
+    
+    <!-- EXPRESSIONS & USEFUL WORDS -->
+    <tr><td>du</td><td>some / uncountable</td><td>dyu</td><td>Je bois du café.</td><td><button onclick="speak('du')">🔊</button></td></tr>
+    <tr><td>des</td><td>some (plural)</td><td>day</td><td>J’achète des fruits.</td><td><button onclick="speak('des')">🔊</button></td></tr>
+    <tr><td>de</td><td>of / from</td><td>duh</td><td>Je viens de l’Inde.</td><td><button onclick="speak('de')">🔊</button></td></tr>
+    <tr><td>dans</td><td>in / inside</td><td>dahn</td><td>Je suis dans la boulangerie.</td><td><button onclick="speak('dans')">🔊</button></td></tr>
+    <tr><td>à</td><td>at / in</td><td>a</td><td>J’habite à Lyon.</td><td><button onclick="speak('à')">🔊</button></td></tr>
+    <tr><td>en</td><td>in (countries)</td><td>ahn</td><td>Je vis en France.</td><td><button onclick="speak('en')">🔊</button></td></tr>
+    <tr><td>un peu</td><td>a little / some</td><td>uhn puh</td><td>Je parle un peu français.</td><td><button onclick="speak('un peu')">🔊</button></td></tr>
+    <tr><td>très</td><td>very</td><td>tray</td><td>C’est très récent.</td><td><button onclick="speak('très')">🔊</button></td></tr>
+    <tr><td>tous les jours</td><td>every day</td><td>too-lay-zhoor</td><td>Je pratique le français tous les jours.</td><td><button onclick="speak('tous les jours')">🔊</button></td></tr>
+    <tr><td>J’essaie</td><td>I try / I am trying</td><td>zhe-say</td><td>J’essaie d’apprendre le français.</td><td><button onclick="speak('J’essaie')">🔊</button></td></tr>
+    <tr><td>au revoir</td><td>goodbye</td><td>oh ruh-vwar</td><td>Au revoir et merci.</td><td><button onclick="speak('au revoir')">🔊</button></td></tr>
+    <tr><td>bonne journée</td><td>have a good day</td><td>bun zhor-nay</td><td>Bonne journée, madame.</td><td><button onclick="speak('bonne journée')">🔊</button></td></tr>
+    <tr><td>voici</td><td>here is</td><td>vwah-see</td><td>Voici votre reçu.</td><td><button onclick="speak('voici')">🔊</button></td></tr>
+    <tr><td>d’accord</td><td>okay</td><td>dah-kor</td><td>D’accord, merci.</td><td><button onclick="speak('d’accord')">🔊</button
 </tbody>
 </table>
 
