@@ -1,1 +1,0 @@
-<tr><td>se promener</td><td>to stroll</td><td>suh proh-muh-nay</td><td>J’aime me promener le soir.</td><td><button onclick="speak('se promener')">🔊</button></td></tr>
