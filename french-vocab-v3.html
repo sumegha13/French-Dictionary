@@ -866,7 +866,7 @@ function toggleMode() {
   kidMode = !kidMode;
   localStorage.setItem('kidMode', kidMode ? '1' : '0');
   const btn = document.getElementById('modeBtn');
-  btn.textContent = kidMode ? '📊 Adult Mode' : '🎒 Kid Mode';
+  btn.textContent = kidMode ? '📊 Study Mode' : '🎒 Kid Mode';
   btn.classList.toggle('kid', kidMode);
   render();
 }
