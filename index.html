@@ -902,20 +902,24 @@ function closeQuiz() {
 }
 
 function startQuiz() {
-  // Pick QUIZ_SIZE words — prioritise unlearned, then shuffle
+  // Load any words flagged "review next time" from previous session
+  const reviewNext = JSON.parse(localStorage.getItem('quizReview') || '[]');
   const all = allWords();
-  const unlearned = all.filter(w => !learned.has(w.fr));
-  const pool = unlearned.length >= QUIZ_SIZE
-    ? unlearned
-    : [...unlearned, ...all.filter(w => learned.has(w.fr))];
-  // Shuffle
+
+  // Build pool: review-next words first, then unlearned, then rest
+  const reviewWords  = reviewNext.map(fr => all.find(w => w.fr === fr)).filter(Boolean);
+  const unlearnedNew = all.filter(w => !learned.has(w.fr) && !reviewNext.includes(w.fr));
+  const rest         = all.filter(w => learned.has(w.fr)  && !reviewNext.includes(w.fr));
+
+  const pool = [...reviewWords, ...unlearnedNew, ...rest];
   const shuffled = pool.slice().sort(() => Math.random() - .5);
-  quizQueue  = shuffled.slice(0, QUIZ_SIZE);
-  quizAgain  = [];
-  quizKnown  = 0;
-  quizMissed = 0;
-  quizTotal  = quizQueue.length;
-  quizDone   = false;
+
+  quizQueue   = shuffled.slice(0, QUIZ_SIZE);
+  quizAgain   = [];   // collected during this session — saved at end, NOT recycled
+  quizKnown   = 0;
+  quizMissed  = 0;
+  quizTotal   = quizQueue.length; // FIXED — never changes
+  quizDone    = false;
 
   document.getElementById('quizResults').classList.remove('show');
   document.getElementById('quizScreen').style.display = 'flex';
@@ -923,28 +927,23 @@ function startQuiz() {
 }
 
 function showNextCard() {
-  // If primary queue empty, move "again" pile back in
-  if (quizQueue.length === 0 && quizAgain.length > 0) {
-    quizQueue = quizAgain.slice().sort(() => Math.random() - .5);
-    quizAgain = [];
-  }
+  // Queue exhausted → end session (no recycling)
   if (quizQueue.length === 0) { showResults(); return; }
 
   quizCurrent = quizQueue.shift();
-  const w = quizCurrent;
+  const w    = quizCurrent;
   const meta = CAT_META[w.cat] || {label: w.cat};
 
-  document.getElementById('quizEm').textContent    = w.em || '📝';
-  document.getElementById('quizFr').textContent    = w.fr;
-  document.getElementById('quizCat').textContent   = (meta.icon||'') + ' ' + (meta.label||'');
-  document.getElementById('quizPron').textContent  = w.pron ? '/' + w.pron + '/' : '';
-  document.getElementById('quizEx').textContent    = w.ex || '';
+  document.getElementById('quizEm').textContent   = w.em || '📝';
+  document.getElementById('quizFr').textContent   = w.fr;
+  document.getElementById('quizCat').textContent  = (meta.icon||'') + ' ' + (meta.label||'');
+  document.getElementById('quizPron').textContent = w.pron ? '/' + w.pron + '/' : '';
+  document.getElementById('quizEx').textContent   = w.ex || '';
 
   document.getElementById('quizReveal').classList.remove('show');
   document.getElementById('quizRevealEn').textContent   = '';
   document.getElementById('quizRevealPron').textContent = '';
 
-  // Reset card position
   const card = document.getElementById('quizCard');
   card.classList.remove('fly');
   card.style.transform = '';
@@ -952,10 +951,9 @@ function showNextCard() {
   document.getElementById('quizIndKnow').style.opacity  = '0';
   document.getElementById('quizIndAgain').style.opacity = '0';
 
-  // Auto-speak
   speak(w.fr);
 
-  // Update progress
+  // Progress: shows how many DONE out of fixed total
   const done = quizKnown + quizMissed;
   const pct  = quizTotal ? Math.round(done / quizTotal * 100) : 0;
   document.getElementById('quizProgFill').style.width = pct + '%';
@@ -966,7 +964,7 @@ function revealAnswer() {
   const w = quizCurrent;
   if (!w) return;
   const rev = document.getElementById('quizReveal');
-  if (rev.classList.contains('show')) return; // already revealed
+  if (rev.classList.contains('show')) return;
   rev.classList.add('show');
   document.getElementById('quizRevealEn').textContent   = w.en;
   document.getElementById('quizRevealPron').textContent = w.pron ? '/' + w.pron + '/' : '';
@@ -981,14 +979,13 @@ function quizAnswer(knew) {
 
   if (knew) {
     quizKnown++;
-    learned.add(quizCurrent.fr);
-    localStorage.setItem('learned', JSON.stringify([...learned]));
-    updateProgress();
+    // ✅ NO auto-starring — quiz "know" is separate from dictionary star
     card.style.transform = 'translateX(120%) rotate(15deg)';
     card.style.opacity   = '0';
   } else {
     quizMissed++;
-    quizAgain.push(quizCurrent); // comes back
+    // ✅ Save for NEXT quiz session, NOT recycled now
+    quizAgain.push(quizCurrent.fr);
     card.style.transform = 'translateX(-120%) rotate(-15deg)';
     card.style.opacity   = '0';
   }
@@ -1001,24 +998,30 @@ function showResults() {
   const res = document.getElementById('quizResults');
   res.classList.add('show');
 
+  // ✅ Save "Again" words to localStorage so NEXT quiz prioritises them
+  localStorage.setItem('quizReview', JSON.stringify(quizAgain));
+
   const pct = quizTotal ? Math.round(quizKnown / quizTotal * 100) : 0;
-  let em = '🎉', title = 'Brilliant!', sub = '';
-  if      (pct === 100) { em='🏆'; title='Perfect score!'; sub='You knew every single word. Magnifique !'; }
-  else if (pct >= 80)   { em='🌟'; title='Brilliant!'; sub='You know most of these well. Keep it up !'; }
-  else if (pct >= 60)   { em='💪'; title='Good progress!'; sub='The tricky ones will come back for practice.'; }
-  else if (pct >= 40)   { em='📚'; title='Keep practising!'; sub='Don\'t worry — repetition is how it sticks.'; }
-  else                  { em='🌱'; title='Just getting started!'; sub='These will feel natural soon, promis !'; }
+  let em, title, sub;
+  if      (pct === 100) { em='🏆'; title='Perfect score!';      sub='You knew every single word. Magnifique !'; }
+  else if (pct >= 80)   { em='🌟'; title='Brilliant!';          sub='You know most of these really well.'; }
+  else if (pct >= 60)   { em='💪'; title='Good progress!';      sub='The ones you missed will come first next time.'; }
+  else if (pct >= 40)   { em='📚'; title='Keep practising!';    sub='Repetition is how it sticks — you\'re doing it.'; }
+  else                  { em='🌱'; title='Just getting started!';sub='These will feel natural soon, promis !'; }
 
   document.getElementById('quizResEm').textContent    = em;
   document.getElementById('quizResTitle').textContent = title;
-  document.getElementById('quizResSub').textContent   = sub + '\n' + quizMissed + ' word' + (quizMissed!==1?'s':'') + ' will come back for review.';
+  document.getElementById('quizResSub').textContent   = sub;
   document.getElementById('quizResKnow').textContent  = quizKnown;
   document.getElementById('quizResAgain').textContent = quizMissed;
 
-  // Save today's quiz date
-  const today = new Date().toISOString().slice(0,10);
+  const note = quizMissed > 0
+    ? quizMissed + ' word' + (quizMissed !== 1 ? 's' : '') + ' saved for next quiz'
+    : 'All words known this round!';
+  document.getElementById('quizDoneNote').textContent = note;
+
+  const today = new Date().toISOString().slice(0, 10);
   localStorage.setItem('lastQuizDate', today);
-  document.getElementById('quizDoneNote').textContent = '✓ Quiz completed for today (' + today + ')';
 }
 
 // ── Swipe gesture on quiz card ───────────────────
@@ -1278,7 +1281,8 @@ function exportWords() {
         <div class="quiz-score-lbl">To review ✗</div>
       </div>
     </div>
-    <button class="quiz-restart-btn" onclick="startQuiz()">🔄 Go again</button>
+    <button class="quiz-restart-btn" onclick="startQuiz()">🔄 Try again</button>
+    <button class="quiz-restart-btn" style="margin-top:10px;background:rgba(255,255,255,.12);backdrop-filter:blur(4px)" onclick="closeQuiz()">✕ Close quiz</button>
     <div class="quiz-done-note" id="quizDoneNote"></div>
   </div>
 </div>
