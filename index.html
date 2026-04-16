@@ -123,6 +123,54 @@ tr:hover td{background:#FAFAF9}
   .panel{width:100%}
   .kid-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
 }
+
+/* ── QUIZ ── */
+.quiz-launch-btn{background:linear-gradient(135deg,#6640E0,#9B75FF);color:white;border-color:#6640E0}
+.quiz-launch-btn:hover{background:linear-gradient(135deg,#5530C8,#8060E8);color:white}
+.quiz-overlay{position:fixed;inset:0;background:rgba(20,20,20,.93);z-index:300;display:none;flex-direction:column;align-items:center;justify-content:flex-start;padding:20px 16px;overflow-y:auto}
+.quiz-overlay.show{display:flex}
+.quiz-header{width:100%;max-width:420px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.quiz-title{color:white;font-family:'Playfair Display',serif;font-size:19px;font-weight:600}
+.quiz-close{background:rgba(255,255,255,.12);border:none;color:white;font-size:20px;width:36px;height:36px;border-radius:50%;cursor:pointer;line-height:36px;text-align:center}
+.quiz-progress-row{width:100%;max-width:420px;margin-bottom:18px}
+.quiz-prog-bar{height:6px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden}
+.quiz-prog-fill{height:100%;background:linear-gradient(90deg,#56CFB2,#A3E8D8);border-radius:3px;transition:width .4s}
+.quiz-prog-txt{font-size:12px;color:rgba(255,255,255,.5);margin-top:5px;text-align:right}
+.quiz-card-wrap{position:relative;width:100%;max-width:360px;height:300px;margin:0 auto}
+.quiz-card{position:absolute;inset:0;background:white;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px;text-align:center;cursor:grab;user-select:none;box-shadow:0 8px 40px rgba(0,0,0,.45);touch-action:none}
+.quiz-card:active{cursor:grabbing}
+.quiz-card.fly{transition:transform .38s cubic-bezier(.4,0,.2,1),opacity .38s}
+.quiz-em{font-size:50px;margin-bottom:8px;line-height:1}
+.quiz-fr{font-family:'Playfair Display',serif;font-size:25px;font-weight:600;color:var(--teal-d);margin-bottom:4px}
+.quiz-cat{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.quiz-pron{font-size:13px;color:var(--muted);font-style:italic;margin-bottom:4px}
+.quiz-ex{font-size:12px;color:#555;font-style:italic;line-height:1.5;max-width:270px}
+.quiz-ind{position:absolute;top:18px;padding:5px 12px;border-radius:20px;font-size:13px;font-weight:700;letter-spacing:.04em;opacity:0;pointer-events:none;border:2.5px solid}
+.quiz-ind-know{right:14px;color:#1B7A4A;border-color:#1B7A4A;background:#E8F8F0}
+.quiz-ind-again{left:14px;color:#B91C1C;border-color:#B91C1C;background:#FEE8E8}
+.quiz-reveal{width:100%;max-width:360px;margin-top:14px;background:rgba(255,255,255,.07);border-radius:14px;padding:13px 18px;text-align:center;display:none}
+.quiz-reveal.show{display:block}
+.quiz-reveal-en{font-size:20px;font-weight:600;color:white;margin-bottom:3px}
+.quiz-reveal-pron{font-size:13px;color:rgba(255,255,255,.5);font-style:italic}
+.quiz-hint{color:rgba(255,255,255,.35);font-size:11px;margin-top:10px;text-align:center}
+.quiz-btns{display:flex;gap:14px;margin-top:16px;width:100%;max-width:360px}
+.quiz-btn{flex:1;padding:13px;border:none;border-radius:13px;font-size:22px;cursor:pointer;font-weight:700;transition:transform .15s}
+.quiz-btn:hover{transform:scale(1.06)}
+.quiz-btn-again{background:#FEE8E8;color:#B91C1C}
+.quiz-btn-know{background:#E8F8F0;color:#1B7A4A}
+.quiz-results{display:none;flex-direction:column;align-items:center;text-align:center;color:white;width:100%;max-width:420px;padding-top:10px}
+.quiz-results.show{display:flex}
+.quiz-results-em{font-size:62px;margin-bottom:12px}
+.quiz-results-title{font-family:'Playfair Display',serif;font-size:23px;font-weight:600;margin-bottom:8px}
+.quiz-results-sub{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:22px;line-height:1.7}
+.quiz-score-row{display:flex;gap:16px;margin-bottom:26px}
+.quiz-score-box{background:rgba(255,255,255,.08);border-radius:12px;padding:14px 22px;text-align:center}
+.quiz-score-num{font-size:30px;font-weight:700}
+.quiz-score-lbl{font-size:11px;color:rgba(255,255,255,.45);margin-top:2px;text-transform:uppercase;letter-spacing:.06em}
+.quiz-score-know .quiz-score-num{color:#56CFB2}
+.quiz-score-again .quiz-score-num{color:#FF8080}
+.quiz-restart-btn{padding:12px 30px;background:linear-gradient(135deg,#6640E0,#9B75FF);color:white;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+.quiz-done-note{font-size:12px;color:rgba(255,255,255,.35);margin-top:10px}
 </style>
 </head>
 <body>
@@ -133,7 +181,8 @@ tr:hover td{background:#FAFAF9}
     <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
     <div class="prog-txt" id="progTxt">0 learned</div>
   </div>
-  <button class="mode-btn" id="modeBtn" onclick="toggleMode()">🎒 Kid Mode</button>
+  <button class="mode-btn" id="modeBtn" onclick="toggleMode()">🎒 Kids Mode</button>
+  <button class="mode-btn quiz-launch-btn" onclick="openQuiz()">🃏 Daily Quiz</button>
 </div>
 
 <div class="filters">
@@ -586,6 +635,45 @@ const BASE = [
 {fr:'se promener',en:'to stroll / go for a walk',pron:'suh proh-muh-nay',ex:'J\'aime me promener le soir.',cat:'verbs',lv:'A2',em:'🚶'},
 {fr:'développer',en:'to develop',pron:'day-vay-loh-pay',ex:'Ils veulent développer leur réseau.',cat:'verbs',lv:'B1',em:'📈'},
 
+// ── VERBS — NEW from essential 40 list ─────────
+// Cooking & eating
+{fr:'bouillir',en:'to boil',pron:'boo-yeer',ex:'Fais bouillir l\'eau avant d\'ajouter les pâtes.',cat:'verbs',lv:'A2',em:'♨️'},
+{fr:'cuisiner',en:'to cook',pron:'kwee-zee-nay',ex:'J\'adore cuisiner le week-end.',cat:'verbs',lv:'A1',em:'👨‍🍳'},
+{fr:'mâcher',en:'to chew',pron:'mah-shay',ex:'Mâche bien ta nourriture.',cat:'verbs',lv:'A2',em:'😮'},
+{fr:'boire',en:'to drink',pron:'bwar',ex:'Je bois de l\'eau tous les jours.',cat:'verbs',lv:'A1',em:'🥤'},
+{fr:'manger',en:'to eat',pron:'mon-zhay',ex:'Nous mangeons à midi.',cat:'verbs',lv:'A1',em:'🍽️'},
+{fr:'frire',en:'to fry',pron:'freer',ex:'Je fais frire les pommes de terre.',cat:'verbs',lv:'A2',em:'🍳'},
+{fr:'cuire à la vapeur',en:'to steam',pron:'kweer a la va-puhr',ex:'Les légumes cuits à la vapeur sont sains.',cat:'verbs',lv:'A2',em:'💨'},
+{fr:'goûter',en:'to taste',pron:'goo-tay',ex:'Goûte cette soupe, elle est délicieuse.',cat:'verbs',lv:'A1',em:'😋'},
+// Body & senses
+{fr:'respirer',en:'to breathe',pron:'res-pee-ray',ex:'Respire profondément.',cat:'verbs',lv:'A1',em:'🌬️'},
+{fr:'tousser',en:'to cough',pron:'too-say',ex:'Il tousse depuis ce matin.',cat:'verbs',lv:'A1',em:'😷'},
+{fr:'se sentir',en:'to feel (oneself)',pron:'suh son-teer',ex:'Je me sens bien aujourd\'hui.',cat:'verbs',lv:'A2',em:'😌'},
+{fr:'entendre',en:'to hear',pron:'on-tond-r',ex:'J\'entends de la musique.',cat:'verbs',lv:'A1',em:'👂'},
+{fr:'regarder',en:'to look / to watch',pron:'ruh-gar-day',ex:'Je regarde la télé le soir.',cat:'verbs',lv:'A1',em:'👀'},
+{fr:'voir',en:'to see',pron:'vwar',ex:'Je vois la Tour Eiffel.',cat:'verbs',lv:'A1',em:'👁️'},
+{fr:'sentir',en:'to smell',pron:'son-teer',ex:'Ça sent bon ici !',cat:'verbs',lv:'A1',em:'👃'},
+{fr:'toucher',en:'to touch',pron:'too-shay',ex:'Ne touche pas à ça.',cat:'verbs',lv:'A1',em:'🤚'},
+{fr:'bâiller',en:'to yawn',pron:'ba-yay',ex:'Il bâille parce qu\'il est fatigué.',cat:'verbs',lv:'A2',em:'🥱'},
+// Social & daily life
+{fr:'fêter',en:'to celebrate',pron:'feh-tay',ex:'On fête son anniversaire ce soir.',cat:'verbs',lv:'A1',em:'🎉'},
+{fr:'saluer',en:'to greet',pron:'sa-lyu-ay',ex:'Il salue ses collègues chaque matin.',cat:'verbs',lv:'A1',em:'👋'},
+{fr:'espérer',en:'to hope',pron:'es-pay-ray',ex:'J\'espère que ça va bien se passer.',cat:'verbs',lv:'A2',em:'🤞'},
+{fr:'inviter',en:'to invite',pron:'an-vee-tay',ex:'Je t\'invite à dîner samedi.',cat:'verbs',lv:'A1',em:'💌'},
+{fr:'embrasser',en:'to kiss / to hug',pron:'om-bra-say',ex:'Elle embrasse sa fille avant l\'école.',cat:'verbs',lv:'A1',em:'😘'},
+{fr:'rencontrer',en:'to meet',pron:'ron-kon-tray',ex:'J\'ai rencontré une amie au marché.',cat:'verbs',lv:'A1',em:'🤝'},
+{fr:'servir',en:'to serve',pron:'sehr-veer',ex:'Le serveur nous sert le repas.',cat:'verbs',lv:'A2',em:'🍷'},
+{fr:'visiter',en:'to visit (a place)',pron:'vee-zee-tay',ex:'Nous allons visiter Lyon.',cat:'verbs',lv:'A1',em:'🗺️'},
+{fr:'vouloir',en:'to want',pron:'voo-lwar',ex:'Je veux apprendre le français.',cat:'verbs',lv:'A1',em:'🙋'},
+{fr:'accueillir',en:'to welcome',pron:'a-kuh-yeer',ex:'Elle accueille ses invités avec le sourire.',cat:'verbs',lv:'A2',em:'🤗'},
+{fr:'arriver',en:'to arrive',pron:'a-ree-vay',ex:'Le train arrive à 18h.',cat:'verbs',lv:'A1',em:'🚉'},
+{fr:'épouser',en:'to marry',pron:'ay-poo-zay',ex:'Ils se sont épousés en juillet.',cat:'verbs',lv:'A2',em:'💍'},
+{fr:'apporter',en:'to bring',pron:'a-por-tay',ex:'Apporte une bouteille de vin.',cat:'verbs',lv:'A1',em:'🎁'},
+{fr:'changer',en:'to change',pron:'shon-zhay',ex:'Je veux changer de travail.',cat:'verbs',lv:'A1',em:'🔄'},
+{fr:'escalader',en:'to climb',pron:'es-ka-la-day',ex:'Les enfants escaladent l\'arbre.',cat:'verbs',lv:'A2',em:'🧗'},
+{fr:'mordre',en:'to bite',pron:'mor-dr',ex:'Le chien peut mordre.',cat:'verbs',lv:'A2',em:'😬'},
+{fr:'étreindre',en:'to embrace / to hold tight',pron:'ay-trahn-dr',ex:'Elle étreint sa fille dans ses bras.',cat:'verbs',lv:'B1',em:'🤗'},
+
 // ── FAMILY (ORIGINAL) ──────────────────────────
 {fr:'famille',en:'family',pron:'fa-mee',ex:'Ma famille habite en France.',cat:'family',lv:'A1',em:'👨‍👩‍👧‍👦'},
 {fr:'parents',en:'parents',pron:'pa-ron',ex:'Mes parents sont gentils.',cat:'family',lv:'A1',em:'👨‍👩‍👧'},
@@ -761,10 +849,230 @@ function updateProgress() {
   document.getElementById('progFill').style.width = pct + '%';
   document.getElementById('progTxt').textContent  = cnt + ' of ' + all.length + ' learned';
 }
+// ════════════════════════════════════════════════
+// SPEECH — picks best French voice available
+// ════════════════════════════════════════════════
+let frVoice = null;
+
+function loadVoices() {
+  const voices = speechSynthesis.getVoices();
+  // Priority: fr-FR > fr-BE > fr-CA > any fr
+  frVoice = voices.find(v => v.lang === 'fr-FR')
+         || voices.find(v => v.lang.startsWith('fr-'))
+         || voices.find(v => v.lang.startsWith('fr'))
+         || null;
+}
+loadVoices();
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = loadVoices;
+}
+
 function speak(word) {
+  speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(word);
-  u.lang = 'fr-FR'; u.rate = 0.9;
-  speechSynthesis.cancel(); speechSynthesis.speak(u);
+  u.lang = 'fr-FR';
+  u.rate = 0.82;
+  u.pitch = 1.0;
+  if (frVoice) u.voice = frVoice;
+  speechSynthesis.speak(u);
+}
+
+// ════════════════════════════════════════════════
+// QUIZ ENGINE
+// ════════════════════════════════════════════════
+const QUIZ_SIZE = 10;
+let quizQueue   = [];   // words left to show this session
+let quizAgain   = [];   // words user didn't know — shown again
+let quizKnown   = 0;
+let quizMissed  = 0;
+let quizTotal   = 0;
+let quizDone    = false;
+let quizCurrent = null;
+
+// swipe tracking
+let swipeStartX = 0, swipeStartY = 0, swipeDx = 0, swiping = false;
+
+function openQuiz() {
+  document.getElementById('quizOverlay').classList.add('show');
+  startQuiz();
+}
+function closeQuiz() {
+  document.getElementById('quizOverlay').classList.remove('show');
+  speechSynthesis.cancel();
+}
+
+function startQuiz() {
+  // Pick QUIZ_SIZE words — prioritise unlearned, then shuffle
+  const all = allWords();
+  const unlearned = all.filter(w => !learned.has(w.fr));
+  const pool = unlearned.length >= QUIZ_SIZE
+    ? unlearned
+    : [...unlearned, ...all.filter(w => learned.has(w.fr))];
+  // Shuffle
+  const shuffled = pool.slice().sort(() => Math.random() - .5);
+  quizQueue  = shuffled.slice(0, QUIZ_SIZE);
+  quizAgain  = [];
+  quizKnown  = 0;
+  quizMissed = 0;
+  quizTotal  = quizQueue.length;
+  quizDone   = false;
+
+  document.getElementById('quizResults').classList.remove('show');
+  document.getElementById('quizScreen').style.display = 'flex';
+  showNextCard();
+}
+
+function showNextCard() {
+  // If primary queue empty, move "again" pile back in
+  if (quizQueue.length === 0 && quizAgain.length > 0) {
+    quizQueue = quizAgain.slice().sort(() => Math.random() - .5);
+    quizAgain = [];
+  }
+  if (quizQueue.length === 0) { showResults(); return; }
+
+  quizCurrent = quizQueue.shift();
+  const w = quizCurrent;
+  const meta = CAT_META[w.cat] || {label: w.cat};
+
+  document.getElementById('quizEm').textContent    = w.em || '📝';
+  document.getElementById('quizFr').textContent    = w.fr;
+  document.getElementById('quizCat').textContent   = (meta.icon||'') + ' ' + (meta.label||'');
+  document.getElementById('quizPron').textContent  = w.pron ? '/' + w.pron + '/' : '';
+  document.getElementById('quizEx').textContent    = w.ex || '';
+
+  document.getElementById('quizReveal').classList.remove('show');
+  document.getElementById('quizRevealEn').textContent   = '';
+  document.getElementById('quizRevealPron').textContent = '';
+
+  // Reset card position
+  const card = document.getElementById('quizCard');
+  card.classList.remove('fly');
+  card.style.transform = '';
+  card.style.opacity   = '';
+  document.getElementById('quizIndKnow').style.opacity  = '0';
+  document.getElementById('quizIndAgain').style.opacity = '0';
+
+  // Auto-speak
+  speak(w.fr);
+
+  // Update progress
+  const done = quizKnown + quizMissed;
+  const pct  = quizTotal ? Math.round(done / quizTotal * 100) : 0;
+  document.getElementById('quizProgFill').style.width = pct + '%';
+  document.getElementById('quizProgTxt').textContent  = done + ' / ' + quizTotal;
+}
+
+function revealAnswer() {
+  const w = quizCurrent;
+  if (!w) return;
+  const rev = document.getElementById('quizReveal');
+  if (rev.classList.contains('show')) return; // already revealed
+  rev.classList.add('show');
+  document.getElementById('quizRevealEn').textContent   = w.en;
+  document.getElementById('quizRevealPron').textContent = w.pron ? '/' + w.pron + '/' : '';
+}
+
+function quizAnswer(knew) {
+  if (!quizCurrent) return;
+  revealAnswer();
+
+  const card = document.getElementById('quizCard');
+  card.classList.add('fly');
+
+  if (knew) {
+    quizKnown++;
+    learned.add(quizCurrent.fr);
+    localStorage.setItem('learned', JSON.stringify([...learned]));
+    updateProgress();
+    card.style.transform = 'translateX(120%) rotate(15deg)';
+    card.style.opacity   = '0';
+  } else {
+    quizMissed++;
+    quizAgain.push(quizCurrent); // comes back
+    card.style.transform = 'translateX(-120%) rotate(-15deg)';
+    card.style.opacity   = '0';
+  }
+
+  setTimeout(showNextCard, 400);
+}
+
+function showResults() {
+  document.getElementById('quizScreen').style.display = 'none';
+  const res = document.getElementById('quizResults');
+  res.classList.add('show');
+
+  const pct = quizTotal ? Math.round(quizKnown / quizTotal * 100) : 0;
+  let em = '🎉', title = 'Brilliant!', sub = '';
+  if      (pct === 100) { em='🏆'; title='Perfect score!'; sub='You knew every single word. Magnifique !'; }
+  else if (pct >= 80)   { em='🌟'; title='Brilliant!'; sub='You know most of these well. Keep it up !'; }
+  else if (pct >= 60)   { em='💪'; title='Good progress!'; sub='The tricky ones will come back for practice.'; }
+  else if (pct >= 40)   { em='📚'; title='Keep practising!'; sub='Don\'t worry — repetition is how it sticks.'; }
+  else                  { em='🌱'; title='Just getting started!'; sub='These will feel natural soon, promis !'; }
+
+  document.getElementById('quizResEm').textContent    = em;
+  document.getElementById('quizResTitle').textContent = title;
+  document.getElementById('quizResSub').textContent   = sub + '\n' + quizMissed + ' word' + (quizMissed!==1?'s':'') + ' will come back for review.';
+  document.getElementById('quizResKnow').textContent  = quizKnown;
+  document.getElementById('quizResAgain').textContent = quizMissed;
+
+  // Save today's quiz date
+  const today = new Date().toISOString().slice(0,10);
+  localStorage.setItem('lastQuizDate', today);
+  document.getElementById('quizDoneNote').textContent = '✓ Quiz completed for today (' + today + ')';
+}
+
+// ── Swipe gesture on quiz card ───────────────────
+function quizCardPointerDown(e) {
+  swiping   = true;
+  swipeStartX = e.touches ? e.touches[0].clientX : e.clientX;
+  swipeStartY = e.touches ? e.touches[0].clientY : e.clientY;
+  swipeDx   = 0;
+}
+function quizCardPointerMove(e) {
+  if (!swiping) return;
+  const x  = e.touches ? e.touches[0].clientX : e.clientX;
+  const y  = e.touches ? e.touches[0].clientY : e.clientY;
+  swipeDx = x - swipeStartX;
+  const dy = Math.abs(y - swipeStartY);
+  if (dy > Math.abs(swipeDx) * 1.5) return; // mostly vertical — let page scroll
+
+  if (e.cancelable) e.preventDefault();
+  const rot  = swipeDx * 0.08;
+  const card = document.getElementById('quizCard');
+  card.style.transform = `translateX(${swipeDx}px) rotate(${rot}deg)`;
+
+  const threshold = 60;
+  document.getElementById('quizIndKnow').style.opacity  = swipeDx >  threshold ? Math.min(1,(swipeDx-threshold)/60).toFixed(2) : '0';
+  document.getElementById('quizIndAgain').style.opacity = swipeDx < -threshold ? Math.min(1,(-swipeDx-threshold)/60).toFixed(2) : '0';
+}
+function quizCardPointerUp() {
+  if (!swiping) return;
+  swiping = false;
+  if      (swipeDx >  90) { quizAnswer(true);  }
+  else if (swipeDx < -90) { quizAnswer(false); }
+  else {
+    // Snap back
+    const card = document.getElementById('quizCard');
+    card.classList.add('fly');
+    card.style.transform = '';
+    card.style.opacity   = '';
+    document.getElementById('quizIndKnow').style.opacity  = '0';
+    document.getElementById('quizIndAgain').style.opacity = '0';
+    setTimeout(() => card.classList.remove('fly'), 380);
+    // Tap = reveal answer
+    if (Math.abs(swipeDx) < 8) revealAnswer();
+  }
+}
+
+// Attach swipe events after DOM ready (done in init)
+function attachSwipeEvents() {
+  const card = document.getElementById('quizCard');
+  card.addEventListener('touchstart',  quizCardPointerDown, {passive:true});
+  card.addEventListener('touchmove',   quizCardPointerMove, {passive:false});
+  card.addEventListener('touchend',    quizCardPointerUp);
+  card.addEventListener('mousedown',   quizCardPointerDown);
+  window.addEventListener('mousemove', quizCardPointerMove);
+  window.addEventListener('mouseup',   quizCardPointerUp);
 }
 
 // ════════════════════════════════════════════════
@@ -866,7 +1174,7 @@ function toggleMode() {
   kidMode = !kidMode;
   localStorage.setItem('kidMode', kidMode ? '1' : '0');
   const btn = document.getElementById('modeBtn');
-  btn.textContent = kidMode ? '📊 Adult Mode' : '🎒 Kid Mode';
+  btn.textContent = kidMode ? '📖 Adult Mode' : '🎒 Kids Mode';
   btn.classList.toggle('kid', kidMode);
   render();
 }
@@ -915,11 +1223,65 @@ function exportWords() {
     `<button class="cat${c.id==='all'?' on':''}" data-id="${c.id}" onclick="setCat('${c.id}')">${c.label}</button>`
   ).join('');
   const btn = document.getElementById('modeBtn');
-  if (kidMode) { btn.textContent = '📊 Study Mode'; btn.classList.add('kid'); }
+  if (kidMode) { btn.textContent = '📖 Adult Mode'; btn.classList.add('kid'); }
   render();
   updateProgress();
+  attachSwipeEvents();
 })();
 </script>
+
+<!-- ══ QUIZ OVERLAY ══ -->
+<div class="quiz-overlay" id="quizOverlay">
+  <!-- Active quiz screen -->
+  <div id="quizScreen" style="width:100%;display:flex;flex-direction:column;align-items:center">
+    <div class="quiz-header">
+      <div class="quiz-title">🃏 Daily Quiz</div>
+      <button class="quiz-close" onclick="closeQuiz()">✕</button>
+    </div>
+    <div class="quiz-progress-row">
+      <div class="quiz-prog-bar"><div class="quiz-prog-fill" id="quizProgFill" style="width:0%"></div></div>
+      <div class="quiz-prog-txt" id="quizProgTxt">0 / 10</div>
+    </div>
+    <div class="quiz-card-wrap">
+      <div class="quiz-card" id="quizCard">
+        <div class="quiz-ind quiz-ind-know" id="quizIndKnow">✓ KNOW IT</div>
+        <div class="quiz-ind quiz-ind-again" id="quizIndAgain">✗ AGAIN</div>
+        <div class="quiz-em" id="quizEm"></div>
+        <div class="quiz-fr" id="quizFr"></div>
+        <div class="quiz-cat" id="quizCat"></div>
+        <div class="quiz-pron" id="quizPron"></div>
+        <div class="quiz-ex" id="quizEx"></div>
+      </div>
+    </div>
+    <div class="quiz-reveal" id="quizReveal">
+      <div class="quiz-reveal-en" id="quizRevealEn"></div>
+      <div class="quiz-reveal-pron" id="quizRevealPron"></div>
+    </div>
+    <div class="quiz-hint" id="quizHint">👆 Tap card to hear · Swipe right = know it · Swipe left = see again</div>
+    <div class="quiz-btns">
+      <button class="quiz-btn quiz-btn-again" onclick="quizAnswer(false)">✗ Again</button>
+      <button class="quiz-btn quiz-btn-know"  onclick="quizAnswer(true)">✓ Know it</button>
+    </div>
+  </div>
+  <!-- Results screen -->
+  <div class="quiz-results" id="quizResults">
+    <div class="quiz-results-em" id="quizResEm"></div>
+    <div class="quiz-results-title" id="quizResTitle"></div>
+    <div class="quiz-results-sub" id="quizResSub"></div>
+    <div class="quiz-score-row">
+      <div class="quiz-score-box quiz-score-know">
+        <div class="quiz-score-num" id="quizResKnow">0</div>
+        <div class="quiz-score-lbl">Known ✓</div>
+      </div>
+      <div class="quiz-score-box quiz-score-again">
+        <div class="quiz-score-num" id="quizResAgain">0</div>
+        <div class="quiz-score-lbl">To review ✗</div>
+      </div>
+    </div>
+    <button class="quiz-restart-btn" onclick="startQuiz()">🔄 Go again</button>
+    <div class="quiz-done-note" id="quizDoneNote"></div>
+  </div>
+</div>
 
 <footer style="text-align:center;color:#888;font-size:12px;padding:28px 20px 40px;line-height:1.9;border-top:1px solid rgba(44,44,42,.08);margin-top:12px">
   <p>© 2026 Sumegha Gondaliya &mdash; Mon Français Dictionary &mdash; Lyon, France</p>
